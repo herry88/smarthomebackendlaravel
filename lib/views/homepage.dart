@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ElevatedButton(
             onPressed: () {
               //living room
-              print('living room');
+              Navigator.of(context).pushNamed('/lights');
             },
             child: const Text('Living ROOM'),
             style: ElevatedButton.styleFrom(
