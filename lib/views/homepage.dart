@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
               //living room
               print('living room');
             },
-            child: const Text('Lampu Modul'),
+            child: const Text('Living ROOM'),
             style: ElevatedButton.styleFrom(
               primary: Colors.orange[700],
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
               //living room
               print('Guest room');
             },
-            child: const Text('Pompa Module'),
+            child: const Text('Guest ROOM'),
             style: ElevatedButton.styleFrom(
               primary: Colors.orange[700],
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
