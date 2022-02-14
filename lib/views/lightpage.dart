@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smarthomebackendlaravel/controller/lightcontroller.dart';
 
+import 'lightdetailpage.dart';
+
 class LightScreen extends StatefulWidget {
   const LightScreen({Key? key}) : super(key: key);
 
@@ -23,17 +25,18 @@ class _LightScreenState extends State<LightScreen> {
         ),
       ),
       body: FutureBuilder<List>(
-          future: lightController.makeRequest(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) print(snapshot.error);
-            return snapshot.hasData
-                ? LightList(
-                    list: snapshot.data ?? [],
-                  )
-                : Center(
-                    child: const CircularProgressIndicator(),
-                  );
-          }),
+        future: lightController.makeRequest(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+          return snapshot.hasData
+              ? LightList(
+                  list: snapshot.data ?? [],
+                )
+              : const Center(
+                  child: CircularProgressIndicator(),
+                );
+        },
+      ),
     );
   }
 }
@@ -47,13 +50,25 @@ class LightList extends StatelessWidget {
     return ListView.builder(
       itemCount: list == null ? 0 : list.length,
       itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(list[index]['nm_lamp']),
-          trailing: Switch(
-            value: list![index]['status'] == 'on' ? true : false,
-            onChanged: (value) {
-              // lightController.changeStatus(list![index]['id'], value);
-            },
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LightDetail(),
+              ),
+            );
+          },
+          child: Card(
+            child: ListTile(
+              title: Text(list[index]['nm_lamp']),
+              trailing: Switch(
+                value: list[index]['status'] == 'on' ? true : false,
+                onChanged: (value) {
+                  // lightController.changeStatus(list![index]['id'], value);
+                },
+              ),
+            ),
           ),
         );
       },

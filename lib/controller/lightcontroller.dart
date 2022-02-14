@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:smarthomebackendlaravel/model/lightmodel.dart';
 
 class LightController {
   Future<List>? makeRequest() async {
