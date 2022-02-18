@@ -10,9 +10,39 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //on button function
+          ElevatedButton(
+            onPressed: () {
+              //living room
+              Navigator.of(context).pushNamed('/lights');
+            },
+            child: const Text('Lampu Modul'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange[700],
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              textStyle:
+                  const TextStyle(fontSize: 40, fontWeight: FontWeight.normal),
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              //living room
+              print('Guest room');
+            },
+            child: const Text('Guest ROOM'),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.orange[700],
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              textStyle:
+                  const TextStyle(fontSize: 40, fontWeight: FontWeight.normal),
+            ),
+          )
+        ],
       ),
     );
   }

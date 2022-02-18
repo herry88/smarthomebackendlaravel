@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smarthomebackendlaravel/views/homepage.dart';
-import 'package:smarthomebackendlaravel/views/loginpage.dart';
+import 'package:smarthomebackendlaravel/views/lightpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: Login(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MyHomePage(),
+        '/lights': (context) => LightScreen(),
+      },
     );
   }
 }
