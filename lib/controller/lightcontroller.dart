@@ -13,15 +13,19 @@ class LightController {
   }
 
   //change status api
-  Future<List>? changeStatus(String id, String status) async {
-    var url = 'https://smarthomebackend.herokuapp.com/api/light/' + id + '/' + status;
-    final response = await http.get(Uri.parse(url), headers: {
-      'Content-Type': 'application/json',
+  void changeStatus(int id, String status) async {
+    var url = 'https://smarthomebackend.herokuapp.com/api/light/$id';
+    http.put(Uri.parse(url), headers: {
       'Accept': 'application/json',
+    }, body: {
+      "status": status,
+    }).then((response) {
+      print(response.statusCode);
+      print('response :${response.body}');
     });
-    return json.decode(response.body)["data"];
-  }
 
+    // return json.decode(response.body)["data"];
+  }
 }
 
 class Light {

@@ -44,7 +44,7 @@ class _LightScreenState extends State<LightScreen> {
 class LightList extends StatelessWidget {
   List list;
   LightList({Key? key, required this.list}) : super(key: key);
-
+  LightController lightController = LightController();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -55,9 +55,9 @@ class LightList extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>LightDetail(
-                  list:list,
-                  index:index,
+                builder: (context) => LightDetail(
+                  list: list,
+                  index: index,
                 ),
               ),
             );
@@ -67,9 +67,7 @@ class LightList extends StatelessWidget {
               title: Text(list[index]['nm_lamp']),
               trailing: Switch(
                 value: list[index]['status'] == 'on' ? true : false,
-                onChanged: (value) {
-                  // lightController.changeStatus(list![index]['id'], value);
-                },
+                onChanged: (bool value) {},
               ),
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smarthomebackendlaravel/controller/lightcontroller.dart';
 
 class LightDetail extends StatefulWidget {
   List? list;
@@ -14,6 +15,8 @@ class LightDetail extends StatefulWidget {
 }
 
 class _LightDetailState extends State<LightDetail> {
+  LightController lightController = LightController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +54,12 @@ class _LightDetailState extends State<LightDetail> {
                     ElevatedButton(
                       child: Text('ON'),
                       onPressed: () {
-                        print('ON');
+                        var on = 'on';
+                        lightController.changeStatus(
+                          widget.list![widget.index]['id'],
+                          on.toString(),
+                        );
+                        Navigator.of(context).pushNamed('/');
                         // ledState(true, 24);
                       },
                       style: ElevatedButton.styleFrom(
@@ -64,15 +72,23 @@ class _LightDetailState extends State<LightDetail> {
                     ElevatedButton(
                       child: Text('OFF'),
                       onPressed: () {
-                        print('OFF');
+                        var off = 'off';
+                        lightController.changeStatus(
+                          widget.list![widget.index]['id'],
+                          off.toString(),
+                        );
+                        Navigator.of(context).pushNamed('/');
                         // ledState(false, 24);
                       },
                       style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 10),
-                          textStyle: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.normal)),
+                        primary: Colors.red,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                        textStyle: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ),
                   ],
                 ),
