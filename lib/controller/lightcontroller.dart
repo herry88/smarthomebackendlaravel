@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class LightController {
   Future<List>? makeRequest() async {
-    var url = 'http://192.168.100.229:8000/api/light';
+    var url = 'https://smarthomebackend.herokuapp.com/api/light/';
     final response = await http.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
