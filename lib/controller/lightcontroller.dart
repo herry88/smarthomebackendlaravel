@@ -11,6 +11,17 @@ class LightController {
     });
     return json.decode(response.body)["data"];
   }
+
+  //change status api
+  Future<List>? changeStatus(String id, String status) async {
+    var url = 'https://smarthomebackend.herokuapp.com/api/light/' + id + '/' + status;
+    final response = await http.get(Uri.parse(url), headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    });
+    return json.decode(response.body)["data"];
+  }
+
 }
 
 class Light {
