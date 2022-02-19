@@ -39,11 +39,7 @@ class _LightDetailState extends State<LightDetail> {
                         fontSize: 18,
                       ),
                     ),
-                    Icon(
-                      Icons.lightbulb_outlined,
-                      color: Colors.white,
-                      size: 90,
-                    ),
+                    widgetIcon(),
                   ],
                 ),
                 SizedBox(
@@ -86,5 +82,21 @@ class _LightDetailState extends State<LightDetail> {
         ),
       ),
     );
+  }
+
+  Widget widgetIcon() {
+    if (widget.list![widget.index]['status'] == 'on') {
+      return const Icon(
+        Icons.lightbulb,
+        color: Colors.green,
+        size: 70,
+      );
+    } else {
+      return const Icon(
+        Icons.lightbulb_outline,
+        color: Colors.white,
+        size: 70,
+      );
+    }
   }
 }
