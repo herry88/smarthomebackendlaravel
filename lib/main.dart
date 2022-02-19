@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: '/',
       routes: {
-        '/': (context) => MyHomePage(),
-        '/lights': (context) => LightScreen(),
+        '/': (context) =>const MyHomePage(),
+        '/lights': (context) =>const LightScreen(),
       },
     );
   }
