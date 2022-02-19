@@ -55,7 +55,10 @@ class LightList extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => LightDetail(),
+                builder: (context) =>LightDetail(
+                  list:list,
+                  index:index,
+                ),
               ),
             );
           },
