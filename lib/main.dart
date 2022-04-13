@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      title: 'Smart Home',
       initialRoute: '/',
       routes: {
-        '/': (context) =>const Login(),
-        '/lights': (context) =>const LightScreen(),
+        '/': (context) => const Login(),
+        '/lights': (context) => const LightScreen(),
       },
     );
   }
