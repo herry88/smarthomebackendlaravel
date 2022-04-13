@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smarthomebackendlaravel/views/homepage.dart';
 import 'package:smarthomebackendlaravel/views/lightpage.dart';
 import 'package:smarthomebackendlaravel/views/loginpage.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Smart Home',
       initialRoute: '/',
       routes: {
-        '/': (context) => const Login(),
+        '/': (context) => Login(),
         '/lights': (context) => const LightScreen(),
       },
     );
