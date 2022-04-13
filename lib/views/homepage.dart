@@ -20,28 +20,16 @@ class _MyHomePageState extends State<MyHomePage> {
               //living room
               Navigator.of(context).pushNamed('/lights');
             },
-            child: const Text('Lampu Modul'),
+            child: const Text('Lampu'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.orange[700],
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              primary: Color.fromARGB(255, 0, 37, 245),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
               textStyle:
-                  const TextStyle(fontSize: 40, fontWeight: FontWeight.normal),
+                  const TextStyle(fontSize: 50, fontWeight: FontWeight.normal),
             ),
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              //living room
-              print('Guest room');
-            },
-            child: const Text('Guest ROOM'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.orange[700],
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              textStyle:
-                  const TextStyle(fontSize: 40, fontWeight: FontWeight.normal),
-            ),
-          )
+          SizedBox(height: 30),
+          
         ],
       ),
     );
