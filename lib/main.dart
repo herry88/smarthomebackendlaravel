@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smarthomebackendlaravel/views/lightpage.dart';
+import 'package:smarthomebackendlaravel/views/bottompage.dart';
 import 'package:smarthomebackendlaravel/views/loginpage.dart';
 
 Future<void> main() async {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       // routes: {
 
       // },
-      home: email == null ? const Login() : const LightScreen(),
+      home: email == null ? const Login() : const BottomPage(),
     );
   }
 }

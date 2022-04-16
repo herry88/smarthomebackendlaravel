@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:smarthomebackendlaravel/views/lightpage.dart';
+import 'package:smarthomebackendlaravel/views/profilepage.dart';
 
 class BottomPage extends StatefulWidget {
   const BottomPage({Key? key}) : super(key: key);
@@ -23,6 +25,7 @@ class _BottomPageState extends State<BottomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           _title[_page],
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -32,12 +35,8 @@ class _BottomPageState extends State<BottomPage> {
         child: PageView(
           controller: _pageController,
           children: [
-            Center(
-              child: Text('Dashboard'),
-            ),
-            Center(
-              child: Text('Profile'),
-            ),
+            LightScreen(),
+            Profile(),
           ],
         ),
       ),

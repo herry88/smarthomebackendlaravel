@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smarthomebackendlaravel/controller/lightcontroller.dart';
+import 'package:smarthomebackendlaravel/views/bottompage.dart';
+import 'package:smarthomebackendlaravel/views/lightpage.dart';
+import 'package:smarthomebackendlaravel/views/loginpage.dart';
 
 class LightDetail extends StatefulWidget {
   List? list;
@@ -59,7 +62,12 @@ class _LightDetailState extends State<LightDetail> {
                           widget.list![widget.index]['id'],
                           on.toString(),
                         );
-                        Navigator.of(context).pushNamed('/');
+                        // Navigator.pop(context);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const BottomPage(),
+                          ),
+                        );
                         // ledState(true, 24);
                       },
                       style: ElevatedButton.styleFrom(
@@ -77,8 +85,11 @@ class _LightDetailState extends State<LightDetail> {
                           widget.list![widget.index]['id'],
                           off.toString(),
                         );
-                        Navigator.of(context).pushNamed('/');
-                        // ledState(false, 24);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const BottomPage(),
+                          ),
+                        ); // ledState(false, 24);
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
@@ -105,12 +116,12 @@ class _LightDetailState extends State<LightDetail> {
       return const Icon(
         Icons.lightbulb,
         color: Colors.green,
-        size: 70,
+        size: 80,
       );
     } else {
       return const Icon(
         Icons.lightbulb_outline,
-        color: Colors.white,
+        color: Colors.black,
         size: 70,
       );
     }
