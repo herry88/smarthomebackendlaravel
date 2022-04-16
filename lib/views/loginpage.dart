@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:smarthomebackendlaravel/views/bottompage.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -8,6 +12,50 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  //deklarasi form
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  login() async {
+    setState(() {
+      _usernameController.text;
+      _passwordController.text;
+    });
+    var url =
+        "https://smarthomebackend.herokuapp.com/api/v1/smartbackend/login";
+    final response = await http.post(Uri.parse(url), headers: {
+      "Accept": "application/json",
+    }, body: {
+      "email": _usernameController.text,
+      "password": _passwordController.text,
+    });
+    var res = json.decode(response.body);
+    if (response.statusCode == 200) {
+       Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BottomPage(),
+          ),
+        );
+    } else {
+      print(
+        "email : ${_usernameController.text} password : ${_passwordController.text}",
+      );
+      return AlertDialog(
+        title: const Text("Login Failed"),
+        content: const Text("Please check your username and password"),
+        actions: <Widget>[
+          TextButton(
+            child: Text("Close"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +84,8 @@ class _LoginState extends State<Login> {
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                     child: Container(
                       color: Color(0xfff5f5f5),
-                      child: TextFormField(
+                      child: TextField(
+                        controller: _usernameController,
                         style: TextStyle(
                           color: Colors.black,
                         ),
@@ -53,7 +102,8 @@ class _LoginState extends State<Login> {
                   ),
                   Container(
                     color: Color(0xfff5f5f5),
-                    child: TextFormField(
+                    child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       style: TextStyle(
                         color: Colors.black,
@@ -68,7 +118,10 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: EdgeInsets.only(top: 20),
                     child: MaterialButton(
-                      onPressed: () {}, //since this is only a UI app
+                      onPressed: () {
+                        login();
+                        print('Login');
+                      }, //since this is only a UI app
                       child: Text(
                         'SIGN IN',
                         style: TextStyle(

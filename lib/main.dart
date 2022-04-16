@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smarthomebackendlaravel/views/lightpage.dart';
 import 'package:smarthomebackendlaravel/views/loginpage.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? email = prefs.getString('email');
+  print(email);
   runApp(const MyApp());
 }
 
@@ -11,13 +16,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String? email;
     return MaterialApp(
       title: 'Smart Home',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Login(),
-        '/lights': (context) => const LightScreen(),
-      },
+      // initialRoute: '/',
+      // routes: {
+
+      // },
+      home: email == null ? const Login() : const LightScreen(),
     );
   }
 }
