@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:smarthomebackendlaravel/views/bottompage.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -29,10 +31,12 @@ class _LoginState extends State<Login> {
     });
     var res = json.decode(response.body);
     if (response.statusCode == 200) {
-      Navigator.pushNamed(
-        context,
-        '/lights',
-      );
+       Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => BottomPage(),
+          ),
+        );
     } else {
       print(
         "email : ${_usernameController.text} password : ${_passwordController.text}",
