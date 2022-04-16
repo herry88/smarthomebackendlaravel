@@ -15,15 +15,6 @@ class _LightScreenState extends State<LightScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Light'),
-        leading: IconButton(
-          icon: const Icon(Icons.home),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
       body: FutureBuilder<List>(
         future: lightController.makeRequest(),
         builder: (context, snapshot) {
